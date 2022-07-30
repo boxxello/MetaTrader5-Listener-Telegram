@@ -2,9 +2,7 @@
 
 ## SETUP
 
-
-Potrai installare il bot in pochi semplici step:
-
+To install the py MT5 bot you can do it in some simple steps:
 Python required version 3.9.
 
 Check your py version by cmd:
@@ -28,6 +26,10 @@ Then let's create a venv :
   py -3.9 -m venv name_of_the_venv
 ```
 
+Then we activate it by:
+```cmd
+\path\to\env\Scripts\activate
+```
 Some of the requirements of the bot need the pip upgrade,
 otherwise it won't work based on MetaTrader5 deps on the
 activated venv.
@@ -43,6 +45,11 @@ pip install -U pymt5adapter
 ```
 This is a link to his repo: https://github.com/nicholishen/pymt5adapter .
 
+
+Then we are going to install the other deps:
+```cmd
+pip install -r requirements.txt
+```
 
 ## Setup of the user_data.env file
 You need to provide all the requirements stated there.
