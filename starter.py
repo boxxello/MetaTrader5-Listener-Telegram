@@ -313,9 +313,6 @@ async def fun_keypress_test(listener: Listener):
                 MT_SERVER = await aioconsole.ainput("Insert MT_SERVER \n")
                 MT_EXE_PATH = await aioconsole.ainput("Insert MT_PATH, FULL PATH\n")
 
-                # MT_LOGIN=5457977
-                # MT_PASSWORD="o8URbYYh"
-                # MT_SERVER="FxPro-MT5"
                 try:
                     return_cl = test_account(logger=listener.logger, status=True, login_info=MT_LOGIN,
                                              password=MT_PASSWORD,
