@@ -66,8 +66,9 @@ class Listener:
         #     self.ocr.show_img_on_window_by_path(path)
         return processed_data
 
-    def add_new_bot(self, logger: logging.Logger, status: bool, freq_check:bool, reactivate_next_month: bool, data_dict: dict):
-        self.bots.append(Bot(logger, status, freq_check,reactivate_next_month, **data_dict))
+    def add_new_bot(self, logger: logging.Logger, status: bool, freq_check: bool, reactivate_next_month: bool,
+                    data_dict: dict):
+        self.bots.append(Bot(logger, status, freq_check, reactivate_next_month, **data_dict))
 
     def get_rand_img_and_test(self):
         file_path = join(const_dirs.TEMP_DIR, get_random_img_str_from_dir(const_dirs.TEMP_DIR))
@@ -112,10 +113,11 @@ class Listener:
         job.modify(next_run_time=datetime.now())
         # self.logger.info(self.scheduler.get_jobs())
         self.scheduler.start()
+
     def reactivate_bots_next_month(self):
         for bot in self.bots:
             if bot.reactivate_next_month.value:
-                bot.status.value=True
+                bot.status.value = True
 
     def set_scheduler_var_to_false(self):
         self.logger.info("stopping the scheduler")
@@ -130,7 +132,6 @@ class Listener:
         self.activate_bots()
         self.scheduler_activate()
 
-
     def run_function_bg(self):
 
         self.scheduler_var = True
@@ -143,9 +144,9 @@ class Listener:
             my_lst = [bot for bot in self.bots if bot.status.value == True and bot.freq_check.value == True]
             if my_lst:
                 try:
-                    #results=[bot.connect(bot.trader.frequency_check_trade,) for bot in my_lst]
+                    # results=[bot.connect(bot.trader.frequency_check_trade,) for bot in my_lst]
                     results = [self.pool.apply(bot.connect, args=(bot.trader.frequency_check_trade,)) for bot in my_lst]
-                    
+
                 except KeyboardInterrupt:
                     self.scheduler_var = False
                     self.pool.terminate()
@@ -182,6 +183,7 @@ class Listener:
                 self.logger.error(f"Unable to kill these processes: {unable_lst}")
         else:
             self.logger.info("No terminal process was found")
+
     def are_all_terminals_running_list(self):
         lst = [bot.exe_path
                for bot in self.bots]
@@ -191,12 +193,12 @@ class Listener:
 
         self.kill_terminal_procs()
 
-        temp_flag_for_loop=False
+        temp_flag_for_loop = False
         self.logger.info("Waiting for the executables to start")
         while not temp_flag_for_loop:
             for bot in self.bots:
                 bot.connect(bot.trader.is_terminal_up)
 
-            if len(self.are_all_terminals_running_list())==len(self.bots):
-                temp_flag_for_loop=True
+            if len(self.are_all_terminals_running_list()) == len(self.bots):
+                temp_flag_for_loop = True
         Thread(target=self.scheduler_activate).start()
