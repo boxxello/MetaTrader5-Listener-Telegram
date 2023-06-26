@@ -1,6 +1,8 @@
-![immagine](https://github.com/boxxello/MetaTrader5-Listener-Telegram/assets/80829428/1856c43c-c111-48cc-8e8a-841ff0c96e00)# MetaTrader5_Listener_Telegram
+![immagine](https://github.com/boxxello/MetaTrader5-Listener-Telegram/assets/80829428/1856c43c-c111-48cc-8e8a-841ff0c96e00)
+# MetaTrader5_Listener_Telegram
 
-Bot sviluppato in Python che rimane in ascolto su server di telegram in attesa di specifiche immagini dalla quale estrapolare dati che tramite opportune lavorazioni diventano segnali che possono e vengono utilizzati per piazzare ordini su mercato Forex, permettendo la gestione di circa 10 account MetaTrader simultaneamente.
+
+A Python bot developed to listen on Telegram servers, waiting for specific images from which it extracts data. Through appropriate processing, this data is transformed into trading signals that can be used to place orders in the Forex market. The bot allows the management of approximately 10 MetaTrader accounts simultaneously.
 ## SETUP
 
 To install the py MT5 bot you can do it in some simple steps:
